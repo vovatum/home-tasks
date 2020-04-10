@@ -1,0 +1,12 @@
+.myNameIs {
+    font-size: 27px;
+    font-style: oblique;
+    letter-spacing: 3px;
+    color: rgba(53, 225, 232, 0.2);
+    background: -webkit-linear-gradient(top, #269991 0%, #e897a2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin-bottom: 20px;
+}

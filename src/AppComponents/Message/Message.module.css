@@ -1,0 +1,36 @@
+.message {
+    background-color: #e897a2;
+    height: 90px;
+    display: flex;
+    align-items: center;
+
+}
+
+.message img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.container {
+    width: 230px;
+    height: 66px;
+    margin-left: 26px;
+    background: #269991;
+    position: relative;
+    border-radius: 15px 15px 15px 0;
+
+}
+
+.container:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 90%;
+    top: calc(50% - 12px);
+    border-bottom: 45px solid #269991;
+    border-left: 47px solid transparent;
+}
