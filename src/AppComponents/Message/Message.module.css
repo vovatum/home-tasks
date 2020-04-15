@@ -19,7 +19,7 @@
     width: 230px;
     height: 66px;
     margin-left: 26px;
-    background: #269991;
+    background: #89a2a1;
     position: relative;
     border-radius: 15px 15px 15px 0;
     display: flex;
@@ -36,7 +36,7 @@
     position: absolute;
     right: 100%;
     top: calc(50% - -13px);
-    border-bottom: 22px solid #269991;
+    border-bottom: 22px solid #89a2a1;
     border-left: 33px solid transparent;
     /*border: 20px solid transparent;*/
     /*border-right: 20px solid green;*/
@@ -61,7 +61,7 @@
 
 .message {
     font-size: smaller;
-    color: #a91314;
+    color: #c9222a;
 }
 
 .time {
