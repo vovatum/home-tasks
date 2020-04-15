@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './MyNameIs.module.css';
 
 const qualities = [
-    {quality: 'Перфекционист'},
-    {quality: 'Сочувствующий'},
-    {quality: 'Нигилист'},
+    {id: 1, quality: 'Перфекционист'},
+    {id: 2, quality: 'Сочувствующий'},
+    {id: 3, quality: 'Нигилист'},
 ];
 
 let qualitiesSpan = qualities.map((item, index) => {
