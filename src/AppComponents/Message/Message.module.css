@@ -60,8 +60,12 @@
 }
 
 .message {
-    font-size: smaller;
+    font-size: xx-small;
     color: #c9222a;
+    display: flex;
+    width: 148px;
+    height: 31px;
+    overflow-x: hidden;
 }
 
 .time {

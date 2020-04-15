@@ -11,9 +11,9 @@ const Message = () => {
                     <span className={styles.name}>
                         Фига Фёдоровна
                     </span>
-                    <span className={styles.message}>
-                        Построим?
-                    </span>
+                    <div className={styles.message}>
+                        Построим! Иииииииииииииииииииииииииииииии корректно отобразим!
+                    </div>
                 </div>
                 <div className={styles.time}>
                     6:38 PM
