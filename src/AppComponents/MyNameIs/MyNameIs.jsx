@@ -2,13 +2,17 @@ import React from 'react';
 import styles from './MyNameIs.module.css';
 
 const qualities = [
-    'Перфекционист',
-    'Сочувствующий',
-    'Нигилист'
+    {quality: 'Перфекционист'},
+    {quality: 'Сочувствующий'},
+    {quality: 'Нигилист'},
 ];
 
-let qualitiesSpan = qualities.map(quality => {
-    return <span>{quality}</span>
+let qualitiesSpan = qualities.map((item, index) => {
+    if (index === 1) {
+        return <span className={styles.fontColor}>{item.quality}</span>;
+    } else {
+        return <span>{item.quality}</span>;
+    }
 });
 
 const MyNameIs = () => {
