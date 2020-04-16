@@ -23,9 +23,8 @@
     position: relative;
     border-radius: 15px 15px 15px 0;
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: space-around;
-    padding: 2px;
     flex-wrap: wrap;
 }
 
@@ -35,7 +34,7 @@
     height: 0;
     position: absolute;
     right: 100%;
-    top: calc(50% - -13px);
+    top: calc(50% - -11px);
     border-bottom: 22px solid #89a2a1;
     border-left: 33px solid transparent;
     /*border: 20px solid transparent;*/
@@ -45,27 +44,35 @@
 
 .messageBlock {
     /*border: black dashed 1px;*/
-    height: 80%;
-    width: 60%;
+    height: 100%;
+    width: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    margin-left: 9px;
 }
 
 .name {
+    /*border: aliceblue dashed 1px;*/
     font-size: small;
     color: aquamarine;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-content: center;
 }
 
 .message {
+    /*border: #c9222a dashed 1px;*/
     font-size: xx-small;
     color: #c9222a;
     display: flex;
-    width: 148px;
-    height: 31px;
-    overflow-x: hidden;
+    width: 100%;
+    height: 54%;
+    overflow: hidden;
+    /*word-wrap: break-word;*/
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .time {
