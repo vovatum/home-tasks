@@ -8,10 +8,10 @@ const qualities = [
 ];
 
 let qualitiesSpan = qualities.map((item, index) => {
-    if (index === 1) {
-        return <span className={styles.fontColor}>{item.quality}</span>;
+    if (item.id === 2) {
+        return <span key={item.id} className={styles.fontColor}>{item.quality}</span>;
     } else {
-        return <span>{item.quality}</span>;
+        return <span key={item.id}>{item.quality}</span>;
     }
 });
 
@@ -27,5 +27,6 @@ const MyNameIs = () => {
         </div>
     )
 };
+
 
 export default MyNameIs;
