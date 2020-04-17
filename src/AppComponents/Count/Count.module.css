@@ -1,0 +1,19 @@
+.container {
+    /*border: blue dashed 1px;*/
+    height: 66px;
+    margin-top: 20px;
+    background: #89a2a1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.push {
+    background: #e897a2;
+}
+
+.spanCount {
+    color: aqua;
+    font-size: 40px;
+    margin: 20px;
+}
