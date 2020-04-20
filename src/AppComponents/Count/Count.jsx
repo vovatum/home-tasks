@@ -1,38 +1,47 @@
 import React from 'react';
 import styles from './Count.module.css'
 
-const Count = () => {
+class Count extends React.Component {
 
-    let countUpNameInput = () => {
-        let spanCount = +document.getElementById('spanCount').innerText
-        spanCount += 1
-        document.getElementById('spanCount').innerText = String(spanCount)
-        let nameInput = document.getElementsByTagName("input")[0].value
-        alert(`Hi, ${nameInput}`)
-        document.getElementsByTagName("input")[0].value = ''
+    constructor(props) {
+        super(props)
+        this.countValueRef = React.createRef()
+        this.nameInputRef = React.createRef()
     }
 
-    return (
-        <div className={styles.container}>
-            <div>
-                    <span id={'spanCount'}
+    counter = () => {
+        let countValue = +this.countValueRef.current.innerText
+        countValue += 1
+        this.countValueRef.current.innerText = countValue
+        let nameInput = this.nameInputRef.current.value
+        this.nameInputRef.current.value = null
+        alert(`Hi, ${nameInput}`)
+    }
+
+    render = () => {
+        return (
+            <div className={styles.container}>
+                <div>
+                    <span ref={this.countValueRef}
                           className={styles.spanCount}>
                         40
                     </span>
+                </div>
+                <div>
+                    <input ref={this.nameInputRef}
+                           type="text"
+                           placeholder="Type your name">
+                    </input>
+                </div>
+                <div>
+                    <button onClick={this.counter}
+                            className={styles.push}>
+                        push me
+                    </button>
+                </div>
             </div>
-            <div>
-                <input type="text"
-                       placeholder="Type your name">
-                </input>
-            </div>
-            <div>
-                <button onClick={countUpNameInput}
-                        className={styles.push}>
-                    push me
-                </button>
-            </div>
-        </div>
-    )
-};
+        )
+    };
+}
 
 export default Count;
