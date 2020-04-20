@@ -9,10 +9,16 @@ class Count extends React.Component {
         this.nameInputRef = React.createRef()
     }
 
+    state = {
+        countValue: 40
+    }
+
     counter = () => {
-        let countValue = +this.countValueRef.current.innerText
-        countValue += 1
-        this.countValueRef.current.innerText = countValue
+        let countValueTemp = this.state.countValue
+        countValueTemp += 1
+        this.setState({
+            countValue: countValueTemp
+        })
         let nameInput = this.nameInputRef.current.value
         this.nameInputRef.current.value = null
         alert(`Hi, ${nameInput}`)
@@ -22,9 +28,8 @@ class Count extends React.Component {
         return (
             <div className={styles.container}>
                 <div>
-                    <span ref={this.countValueRef}
-                          className={styles.spanCount}>
-                        40
+                    <span className={styles.spanCount}>
+                        {this.state.countValue}
                     </span>
                 </div>
                 <div>
