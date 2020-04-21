@@ -5,31 +5,28 @@ class Count extends React.Component {
 
     constructor(props) {
         super(props)
-        this.countValueRef = React.createRef()
         this.nameInputRef = React.createRef()
     }
 
-    state = {
-        countValue: 40
-    }
-
     counter = () => {
-        let countValueTemp = this.state.countValue
+        let countValueTemp = this.props.state.countValue
         countValueTemp += 1
-        this.setState({
-            countValue: countValueTemp
-        })
         let nameInput = this.nameInputRef.current.value
         this.nameInputRef.current.value = null
-        alert(`Hi, ${nameInput}`)
+        this.props.onButton(countValueTemp, nameInput)
     }
 
     render = () => {
         return (
             <div className={styles.container}>
+                {/*<div>*/}
+                {/*    <li>*/}
+                {/*        {this.state.nameInput}*/}
+                {/*    </li>*/}
+                {/*</div>*/}
                 <div>
                     <span className={styles.spanCount}>
-                        {this.state.countValue}
+                        {this.props.state.countValue}
                     </span>
                 </div>
                 <div>

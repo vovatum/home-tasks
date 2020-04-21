@@ -4,15 +4,33 @@ import MyNameIs from "./AppComponents/MyNameIs/MyNameIs";
 import Message from "./AppComponents/Message/Messаge";
 import Count from "./AppComponents/Count/Count";
 
-const App = () => {
+class App extends React.Component {
 
-    return (
-        <div className={styles.app}>
-            <MyNameIs/>
-            <Message/>
-            <Count/>
-        </div>
-    )
+    state = {
+        countValue: 40
+    }
+
+    onButton = (countValueTemp, stateInputTemp) => {
+        alert(`Hi, ${stateInputTemp}`)
+
+        this.setState(
+            {
+                countValue: countValueTemp,
+                nameInput: stateInputTemp
+            }
+        )
+    }
+
+    render = () => {
+        return (
+            <div className={styles.app}>
+                <MyNameIs/>
+                <Message/>
+                <Count state={this.state}
+                       onButton={this.onButton}/>
+            </div>
+        )
+    }
 }
 
 export default App;
