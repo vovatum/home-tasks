@@ -7,16 +7,19 @@ import Count from "./AppComponents/Count/Count";
 class App extends React.Component {
 
     state = {
-        countValue: 40
+        countValue: 40,
+        inputName: []
     }
 
-    onButton = (countValueTemp, stateInputTemp) => {
-        alert(`Hi, ${stateInputTemp}`)
+    onButton = (countValueTemp, inputNameTemp) => {
+        alert(`Hi, ${inputNameTemp}`)
+        let nameInputTemp = this.state.inputName
+        nameInputTemp.push(inputNameTemp)
 
         this.setState(
             {
                 countValue: countValueTemp,
-                nameInput: stateInputTemp
+                inputName: nameInputTemp
             }
         )
     }

@@ -5,43 +5,46 @@ class Count extends React.Component {
 
     constructor(props) {
         super(props)
-        this.nameInputRef = React.createRef()
+        this.inputNameRef = React.createRef()
     }
 
-    counter = () => {
+    onButton = () => {
         let countValueTemp = this.props.state.countValue
         countValueTemp += 1
-        let nameInput = this.nameInputRef.current.value
-        this.nameInputRef.current.value = null
-        this.props.onButton(countValueTemp, nameInput)
+        let inputName = this.inputNameRef.current.value
+        this.inputNameRef.current.value = null
+        this.props.onButton(countValueTemp, inputName)
     }
 
     render = () => {
+        let names = this.props.state.inputName.map(name => <li>{name}</li>)
         return (
-            <div className={styles.container}>
-                {/*<div>*/}
-                {/*    <li>*/}
-                {/*        {this.state.nameInput}*/}
-                {/*    </li>*/}
-                {/*</div>*/}
-                <div>
+            <div>
+                <div className={styles.container}>
+                    <div>
                     <span className={styles.spanCount}>
                         {this.props.state.countValue}
                     </span>
+                    </div>
+                    <div>
+                        <input className={styles.inputName}
+                               ref={this.inputNameRef}
+                               type="text"
+                               placeholder="Type your name">
+                        </input>
+                    </div>
+                    <div>
+                        <button onClick={this.onButton}
+                                className={styles.push}>
+                            push me
+                        </button>
+                    </div>
                 </div>
                 <div>
-                    <input ref={this.nameInputRef}
-                           type="text"
-                           placeholder="Type your name">
-                    </input>
-                </div>
-                <div>
-                    <button onClick={this.counter}
-                            className={styles.push}>
-                        push me
-                    </button>
+                    {names}
                 </div>
             </div>
+
         )
     };
 }
