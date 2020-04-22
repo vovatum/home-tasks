@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/https,://vovkahimik.github.io/home-tasks/static/css/main.f122a089.chunk.css",
-    "main.js": "/https,://vovkahimik.github.io/home-tasks/static/js/main.ad105289.chunk.js",
-    "main.js.map": "/https,://vovkahimik.github.io/home-tasks/static/js/main.ad105289.chunk.js.map",
-    "runtime-main.js": "/https,://vovkahimik.github.io/home-tasks/static/js/runtime-main.08120838.js",
-    "runtime-main.js.map": "/https,://vovkahimik.github.io/home-tasks/static/js/runtime-main.08120838.js.map",
-    "static/js/2.0606e94d.chunk.js": "/https,://vovkahimik.github.io/home-tasks/static/js/2.0606e94d.chunk.js",
-    "static/js/2.0606e94d.chunk.js.map": "/https,://vovkahimik.github.io/home-tasks/static/js/2.0606e94d.chunk.js.map",
-    "index.html": "/https,://vovkahimik.github.io/home-tasks/index.html",
-    "precache-manifest.6424e43d76c081dc2552afd804b5ed32.js": "/https,://vovkahimik.github.io/home-tasks/precache-manifest.6424e43d76c081dc2552afd804b5ed32.js",
-    "service-worker.js": "/https,://vovkahimik.github.io/home-tasks/service-worker.js",
-    "static/css/main.f122a089.chunk.css.map": "/https,://vovkahimik.github.io/home-tasks/static/css/main.f122a089.chunk.css.map",
-    "static/js/2.0606e94d.chunk.js.LICENSE.txt": "/https,://vovkahimik.github.io/home-tasks/static/js/2.0606e94d.chunk.js.LICENSE.txt"
+    "main.css": "/home-tasks/static/css/main.f122a089.chunk.css",
+    "main.js": "/home-tasks/static/js/main.b5dbd6aa.chunk.js",
+    "main.js.map": "/home-tasks/static/js/main.b5dbd6aa.chunk.js.map",
+    "runtime-main.js": "/home-tasks/static/js/runtime-main.5e739af9.js",
+    "runtime-main.js.map": "/home-tasks/static/js/runtime-main.5e739af9.js.map",
+    "static/js/2.0606e94d.chunk.js": "/home-tasks/static/js/2.0606e94d.chunk.js",
+    "static/js/2.0606e94d.chunk.js.map": "/home-tasks/static/js/2.0606e94d.chunk.js.map",
+    "index.html": "/home-tasks/index.html",
+    "precache-manifest.0082d54f8d78a36f07c9924a05584394.js": "/home-tasks/precache-manifest.0082d54f8d78a36f07c9924a05584394.js",
+    "service-worker.js": "/home-tasks/service-worker.js",
+    "static/css/main.f122a089.chunk.css.map": "/home-tasks/static/css/main.f122a089.chunk.css.map",
+    "static/js/2.0606e94d.chunk.js.LICENSE.txt": "/home-tasks/static/js/2.0606e94d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.08120838.js",
+    "static/js/runtime-main.5e739af9.js",
     "static/js/2.0606e94d.chunk.js",
     "static/css/main.f122a089.chunk.css",
-    "static/js/main.ad105289.chunk.js"
+    "static/js/main.b5dbd6aa.chunk.js"
   ]
 }
