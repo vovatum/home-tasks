@@ -11,8 +11,10 @@ class App extends React.Component {
         inputName: []
     }
 
-    onButton = (countValueTemp, inputNameTemp) => {
+    onButton = (inputNameTemp) => {
         // alert(`Hi, ${inputNameTemp}`)
+        let countValueTemp = this.state.countValue
+        countValueTemp += 1
         let nameInputTemp = this.state.inputName
         nameInputTemp.push(inputNameTemp)
 
