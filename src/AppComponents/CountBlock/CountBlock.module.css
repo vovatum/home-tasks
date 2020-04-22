@@ -1,6 +1,10 @@
-.container {
-    height: 66px;
+.container{
+    height: 500px;
     background: -webkit-linear-gradient(top, #e897a2 0%, #269991 100%);
+}
+
+.countBlock {
+    height: 66px;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -3,21 +3,22 @@ import styles from './CountBlock.module.css'
 import Counter from "./Counter/Counter";
 import InputName from "./InputName/InputName";
 import ButtonPush from "./ButtonPush/ButtonPush";
+import Names from "./Names/Names";
 
 class CountBlock extends React.Component {
 
     render = () => {
-        let names = this.props.state.inputName.map(name => <li>{name}</li>)
+
         return (
-            <div>
-                <div className={styles.container}>
+            <div className={styles.container}>
+                <div className={styles.countBlock}>
                     <Counter countValue={this.props.state.countValue}/>
                     <InputName onButton={this.props.onButton}
                                refer={this.props.refer}/>
                     <ButtonPush onButton={this.props.onButton}/>
                 </div>
                 <div>
-                    {names}
+                    <Names names={this.props.state.inputName}/>
                 </div>
             </div>
         )
