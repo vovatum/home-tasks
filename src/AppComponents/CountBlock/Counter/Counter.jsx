@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Counter.module.css'
 
-const Count = (props) => {
+const Counter = (props) => {
     return (
         <div>
             <span className={styles.spanCount}>
@@ -12,4 +12,4 @@ const Count = (props) => {
     )
 }
 
-export default Count;
+export default Counter;

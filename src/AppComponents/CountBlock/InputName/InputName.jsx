@@ -1,31 +1,17 @@
 import React from 'react';
-import styles from '../Counter/Counter.module.css'
+import styles from './InputName.module.css'
 
-class InputName extends React.Component {
+const InputName  = (props) => {
 
-    constructor(props) {
-        super(props)
-        this.inputNameRef = React.createRef()
-    }
-    // onButton = () => {
-    //
-    //     let inputName = this.inputNameRef.current.value
-    //     this.inputNameRef.current.value = null
-    //     this.props.onButton(inputName)
-    // }
-    render = () => {
-
-        this.props.onButton(this.inputNameRef)
         return (
             <div>
                 <input className={styles.inputName}
-                       ref={this.inputNameRef}
+                       ref={props.refer}
                        type="text"
                        placeholder="Type your name">
                 </input>
             </div>
         )
-    }
 }
 
 export default InputName;

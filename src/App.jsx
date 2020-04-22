@@ -6,18 +6,22 @@ import CountBlock from "./AppComponents/CountBlock/CountBlock";
 
 class App extends React.Component {
 
+    inputNameRef = React.createRef();
+
     state = {
         countValue: 40,
         inputName: []
     }
 
-    onButton = (inputNameTemp) => {
+    onButton = () => {
         // alert(`Hi, ${inputNameTemp}`)
         let countValueTemp = this.state.countValue
         countValueTemp += 1
+        let inputNameTemp = this.inputNameRef.current.value
+        this.inputNameRef.current.value = null
         let nameInputTemp = this.state.inputName
         nameInputTemp.push(inputNameTemp)
-
+        // let nameInputTemp = [...this.state.inputName, inputNameTemp];
         this.setState(
             {
                 countValue: countValueTemp,
@@ -32,7 +36,8 @@ class App extends React.Component {
                 <MyNameIs state={this.state}/>
                 <Message/>
                 <CountBlock state={this.state}
-                            onButton={this.onButton}/>
+                            onButton={this.onButton}
+                            refer={this.inputNameRef}/>
             </div>
         )
     }
