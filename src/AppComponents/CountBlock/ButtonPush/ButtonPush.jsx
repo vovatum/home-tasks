@@ -3,13 +3,9 @@ import styles from './ButtonPush.module.css'
 
 const ButtonPush = (props) => {
 
-    let onButtonPush = () => {
-        props.onButton()
-    }
-
     return (
         <div>
-            <button onClick={onButtonPush}
+            <button onClick={props.onButton}
                     className={styles.push}>
                 push me
             </button>
