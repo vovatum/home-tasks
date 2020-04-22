@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './Count.module.css'
+import styles from './CountBlock.module.css'
+import Count from "./Counter/Counter";
 
-class Count extends React.Component {
+class CountBlock extends React.Component {
 
     constructor(props) {
         super(props)
@@ -21,11 +22,7 @@ class Count extends React.Component {
         return (
             <div>
                 <div className={styles.container}>
-                    <div>
-                    <span className={styles.spanCount}>
-                        {this.props.state.countValue}
-                    </span>
-                    </div>
+                    <Count countValue={this.props.state.countValue}/>
                     <div>
                         <input className={styles.inputName}
                                ref={this.inputNameRef}
@@ -44,9 +41,8 @@ class Count extends React.Component {
                     {names}
                 </div>
             </div>
-
         )
     };
 }
 
-export default Count;
+export default CountBlock;

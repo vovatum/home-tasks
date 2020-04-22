@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './App.module.css';
 import MyNameIs from "./AppComponents/MyNameIs/MyNameIs";
 import Message from "./AppComponents/Message/Messаge";
-import Count from "./AppComponents/Count/Count";
+import CountBlock from "./AppComponents/CountBlock/CountBlock";
 
 class App extends React.Component {
 
@@ -12,7 +12,7 @@ class App extends React.Component {
     }
 
     onButton = (countValueTemp, inputNameTemp) => {
-        alert(`Hi, ${inputNameTemp}`)
+        // alert(`Hi, ${inputNameTemp}`)
         let nameInputTemp = this.state.inputName
         nameInputTemp.push(inputNameTemp)
 
@@ -27,10 +27,10 @@ class App extends React.Component {
     render = () => {
         return (
             <div className={styles.app}>
-                <MyNameIs/>
+                <MyNameIs state={this.state}/>
                 <Message/>
-                <Count state={this.state}
-                       onButton={this.onButton}/>
+                <CountBlock state={this.state}
+                            onButton={this.onButton}/>
             </div>
         )
     }
