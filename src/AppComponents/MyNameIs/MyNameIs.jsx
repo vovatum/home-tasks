@@ -7,9 +7,10 @@ const qualities = [
     {id: 3, quality: 'Нигилист'},
 ];
 
-let qualitiesSpan = qualities.map((item, index) => {
+let qualitiesSpan = qualities.map(item => {
     if (item.id === 2) {
-        return <span key={item.id} className={styles.fontColor}>{item.quality}</span>;
+        return <span key={item.id}
+                     className={styles.fontColor}>{item.quality}</span>;
     } else {
         return <span key={item.id}>{item.quality}</span>;
     }

@@ -10,22 +10,23 @@ class App extends React.Component {
 
     state = {
         countValue: 40,
-        inputName: []
+        inputName: [],
+        idCount: 0
     }
 
     onButton = () => {
         // alert(`Hi, ${inputNameTemp}`)
         let countValueTemp = this.state.countValue
         countValueTemp += 1
-        let inputNameTemp = this.inputNameRef.current.value
+        let inputNameValue = this.inputNameRef.current.value
+        let inputNameTemp = {id: this.state.idCount+1, name: inputNameValue}
         this.inputNameRef.current.value = null
-        let nameInputTemp = this.state.inputName
-        nameInputTemp.push(inputNameTemp)
-        // let nameInputTemp = [...this.state.inputName, inputNameTemp];
+        let nameInputTemp = [...this.state.inputName, inputNameTemp];
         this.setState(
             {
                 countValue: countValueTemp,
-                inputName: nameInputTemp
+                inputName: nameInputTemp,
+                idCount: inputNameTemp.id
             }
         )
     }
