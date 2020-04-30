@@ -2,33 +2,32 @@ import React from 'react';
 import styles from './App.module.css';
 import MyNameIs from "./AppComponents/MyNameIs/MyNameIs";
 import Message from "./AppComponents/Message/Messаge";
-import CountBlock from "./AppComponents/CountBlock/CountBlock";
+import CoInBuBlock from "./AppComponents/CoInBuBlock/CoInBuBlock";
 
 class App extends React.Component {
 
-    inputNameRef;
-
     state = {
         countValue: 40,
-        inputName: [],
-        idCount: 0
+        names: [],
+        nameId: 0,
+        name: ''
     }
 
-    inputTargetValue = (inputTargetValue) => {
-        this.inputNameRef = inputTargetValue
+    inputNameTarget = (inputNameTarget) => {
+        this.setState({name: inputNameTarget})
     }
 
     onButton = () => {
         let countValueTemp = this.state.countValue
         countValueTemp += 1
-        // alert(`Hi, ${this.inputNameRef}`)
-        let inputNameTemp = {id: this.state.idCount + 1, name: this.inputNameRef}
-        let nameInputTemp = [...this.state.inputName, inputNameTemp];
+        // alert(`Hi, ${this.state.name}`)
+        let newName = {id: this.state.nameId + 1, name: this.state.name}
+        let namesArr = [...this.state.names, newName];
         this.setState(
             {
                 countValue: countValueTemp,
-                inputName: nameInputTemp,
-                idCount: inputNameTemp.id
+                names: namesArr,
+                nameId: newName.id
             }
         )
     }
@@ -39,10 +38,9 @@ class App extends React.Component {
             <div className={styles.app}>
                 <MyNameIs state={this.state}/>
                 <Message/>
-                <CountBlock state={this.state}
-                            onButton={this.onButton}
-                            inputTargetValue={this.inputTargetValue}
-                            refer={this.inputNameRef}/>
+                <CoInBuBlock state={this.state}
+                             onButton={this.onButton}
+                             inputNameTarget={this.inputNameTarget}/>
             </div>
         )
     }
