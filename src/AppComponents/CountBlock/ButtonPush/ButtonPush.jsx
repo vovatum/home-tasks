@@ -5,7 +5,7 @@ const ButtonPush = (props) => {
 
     return (
         <div>
-            <button onClick={props.onButton}
+            <button onClick={props.onAddNameClick}
                     className={styles.push}>
                 push me
             </button>

@@ -18,6 +18,11 @@ class InputName extends React.Component {
         }
     }
 
+    onEnterPress = (event) => {
+        if (event.key === 'Enter')
+            this.props.onAddNameClick()
+    }
+
     render = () => {
 
         let classForError = this.state.error
@@ -28,6 +33,7 @@ class InputName extends React.Component {
             <div>
                 <input className={classForError}
                        onChange={this.onTypeInput}
+                       onKeyPress={this.onEnterPress}
                        ref={this.props.refer}
                        type="text"
                        placeholder="Type your name">
