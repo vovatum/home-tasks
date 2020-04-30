@@ -13,11 +13,13 @@ class InputName extends React.Component {
             title: event.currentTarget.value,
             error: false
         })
+        this.props.inputTargetValue(this.state.title)
+
     }
 
     onEnterPress = (event) => {
         if (event.key === 'Enter')
-            this.props.onAddNameClick()
+            this.props.onButton()
         this.setState({title: event.currentTarget.value})
         let inputName = this.state.title
         if (inputName === '') {
@@ -38,7 +40,6 @@ class InputName extends React.Component {
                 <input className={classForError}
                        onChange={this.onTypeInput}
                        onKeyPress={this.onEnterPress}
-                       ref={this.props.refer}
                        type="text"
                        placeholder="Type your name">
                 </input>

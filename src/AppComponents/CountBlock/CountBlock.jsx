@@ -7,15 +7,9 @@ import Names from "./Names/Names";
 
 class CountBlock extends React.Component {
 
-    // state = {
-    //     error: true,
-    //     title: ''
+    // onAddNameClick = () => {
+    //     this.props.onButton()
     // }
-
-    onAddNameClick = () => {
-        // if(this.props.refer   )
-        this.props.onButton()
-    }
 
     render = () => {
         return (
@@ -23,9 +17,12 @@ class CountBlock extends React.Component {
                 <div className={styles.countBlock}>
                     <Counter countValue={this.props.state.countValue}/>
                     <InputName refer={this.props.refer}
-                               onAddNameClick={this.onAddNameClick}/>
+                               onButton={this.props.onButton}
+                               inputTargetValue={this.props.inputTargetValue}/>
                     <ButtonPush onButton={this.props.onButton}
-                                onAddNameClick={this.onAddNameClick}/>
+                                // onAddNameClick={this.onAddNameClick}
+                                refer={this.inputNameRef}/>
+
                 </div>
                 <div>
                     <Names names={this.props.state.inputName}/>
