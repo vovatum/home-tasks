@@ -4,11 +4,20 @@ import styles from './InputName.module.css'
 class InputName extends React.Component {
 
     state = {
-        error: true,
+        error: false,
         title: ''
     }
 
     onTypeInput = (event) => {
+        this.setState({
+            title: event.currentTarget.value,
+            error: false
+        })
+    }
+
+    onEnterPress = (event) => {
+        if (event.key === 'Enter')
+            this.props.onAddNameClick()
         this.setState({title: event.currentTarget.value})
         let inputName = this.state.title
         if (inputName === '') {
@@ -16,11 +25,6 @@ class InputName extends React.Component {
         } else {
             this.setState({error: false})
         }
-    }
-
-    onEnterPress = (event) => {
-        if (event.key === 'Enter')
-            this.props.onAddNameClick()
     }
 
     render = () => {
