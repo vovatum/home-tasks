@@ -1,4 +1,10 @@
 .inputName {
     background: #e897a2;
     color: #c9222a;
+    /*border-color: #e897a2;*/
+
+}
+
+.error {
+    border-color: red;
 }

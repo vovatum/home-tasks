@@ -13,8 +13,7 @@ class CountBlock extends React.Component {
             <div className={styles.container}>
                 <div className={styles.countBlock}>
                     <Counter countValue={this.props.state.countValue}/>
-                    <InputName onButton={this.props.onButton}
-                               refer={this.props.refer}/>
+                    <InputName refer={this.props.refer}/>
                     <ButtonPush onButton={this.props.onButton}/>
                 </div>
                 <div>

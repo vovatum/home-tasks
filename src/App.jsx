@@ -4,18 +4,45 @@ import MyNameIs from "./AppComponents/MyNameIs/MyNameIs";
 import Message from "./AppComponents/Message/Messаge";
 import CountBlock from "./AppComponents/CountBlock/CountBlock";
 
-const App = (props) => {
+class App extends React.Component {
 
+    inputNameRef = React.createRef();
 
-    return (
-        <div className={styles.app}>
-            <MyNameIs state={props.state}/>
-            <Message/>
-            <CountBlock state={props.state}
-                        onButton={props.onButton}
-                        refer={props.inputNameRef}/>
-        </div>
-    )
+    state = {
+        countValue: 40,
+        inputName: [],
+        idCount: 0
+    }
+
+    onButton = () => {
+        let countValueTemp = this.state.countValue
+        countValueTemp += 1
+        let inputNameValue = this.inputNameRef.current.value
+        // alert(`Hi, ${inputNameValue}`)
+        let inputNameTemp = {id: this.state.idCount + 1, name: inputNameValue}
+        this.inputNameRef.current.value = ''
+        let nameInputTemp = [...this.state.inputName, inputNameTemp];
+        this.setState(
+            {
+                countValue: countValueTemp,
+                inputName: nameInputTemp,
+                idCount: inputNameTemp.id
+            }
+        )
+    }
+
+    render = () => {
+
+        return (
+            <div className={styles.app}>
+                <MyNameIs state={this.state}/>
+                <Message/>
+                <CountBlock state={this.state}
+                            onButton={this.onButton}
+                            refer={this.inputNameRef}/>
+            </div>
+        )
+    }
 }
 
 export default App;
