@@ -18,25 +18,28 @@ class App extends React.Component {
     }
 
     onButton = () => {
-        let countValueTemp = this.state.countValue
-        countValueTemp += 1
-        // alert(`Hi, ${this.state.name}`)
-        let newName = {id: this.state.nameId + 1, name: this.state.name}
-        let namesArr = [...this.state.names, newName];
-        this.setState(
-            {
-                countValue: countValueTemp,
-                names: namesArr,
-                nameId: newName.id
-            }
-        )
+        if (this.state.name !== '') {
+            let countValueTemp = this.state.countValue
+            countValueTemp += 1
+            alert(`В инпуте имя, ${this.state.name}`)
+            let newName = {id: this.state.nameId + 1, name: this.state.name}
+            let namesArr = [...this.state.names, newName]
+            this.setState(
+                {
+                    countValue: countValueTemp,
+                    names: namesArr,
+                    nameId: newName.id,
+                    name: ''
+                }
+            )
+        }
     }
 
     render = () => {
 
         return (
             <div className={styles.app}>
-                <MyNameIs state={this.state}/>
+                <MyNameIs/>
                 <Message/>
                 <CoInBuBlock state={this.state}
                              onButton={this.onButton}

@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './CoInBuBlock.module.css'
-import InputName from "./InputName/InputName";
-import ButtonPush from "./ButtonPush/ButtonPush";
+import InputName from "../InputName/InputName";
+import ButtonPush from "../ButtonPush/ButtonPush";
+import styles from './InBuBlock.module.css'
 
 class CoInBuBlock extends React.Component {
 
@@ -31,14 +31,11 @@ class CoInBuBlock extends React.Component {
     render = () => {
         return (
             <div className={styles.container}>
-                <div className={styles.countBlock}>
                     <InputName state={this.state}
                                addName={this.addName}
                                createInBuState={this.createInBuState}
                                inputNameTarget={this.props.inputNameTarget}/>
                     <ButtonPush addName={this.addName}/>
-                    {/*// onAddNameClick={this.onAddNameClick}*/}
-                </div>
             </div>
         )
     };

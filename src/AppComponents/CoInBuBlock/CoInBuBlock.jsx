@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './CoInBuBlock.module.css'
 import Counter from "./Counter/Counter";
 import Names from "./Names/Names";
-import InBuBlock from "./InBuBlock";
+import InBuBlock from "./InBuBlock/InBuBlock";
 
 class CoInBuBlock extends React.Component {
 
