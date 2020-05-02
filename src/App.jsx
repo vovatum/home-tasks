@@ -42,6 +42,7 @@ class App extends React.Component {
         return (
             <div className={styles.app}>
                 <NavBar/>
+                <NavBar/>
                 <div className={styles.days}>
                     <Route path='/monday' render={() =>
                         <div className={styles.monday}>
