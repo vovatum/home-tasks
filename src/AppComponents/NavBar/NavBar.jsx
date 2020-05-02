@@ -1,24 +1,40 @@
 import React from 'react'
 import styles from "./NavBar.module.css"
 import {NavLink} from "react-router-dom"
+import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const NavBar = (props) => {
+class NavBar extends React.Component {
 
-    return (
-        <nav className={styles.nav}>
-            <div className={styles.item}>
-                <NavLink to={"/monday"}
-                         activeClassName={styles.activeLink}>Понедельник
-                </NavLink>
+    state = {
+        icon: styles.icon,
+    }
+
+    changeClassIcon = () => {
+        this.setState({icon: styles.icon})
+    }
+
+    changeClassIconTuesday = () => {
+        this.setState({icon: styles.iconTuesday})
+    }
+
+    render = () => {
+
+        return (
+            <div className={styles.wrapper}>
+                <nav className={styles.nav}>
+                    <NavLink to={"/monday"}
+                             activeClassName={styles.activeLink}
+                             onClick={this.changeClassIcon}>Понедельник</NavLink>
+                    <NavLink to={'/tuesday'}
+                             activeClassName={styles.activeLink}
+                             onClick={this.changeClassIconTuesday}>Вторник</NavLink>
+                </nav>
+                <FontAwesomeIcon className={this.state.icon}
+                                 icon={faBars}/>
             </div>
-            <div className={styles.item}>
-                <NavLink to={'/tuesday'}
-                         activeClassName={styles.activeLink}>Вторник
-                </NavLink>
-            </div>
-            {/*<i className="fas fa-bars"></i>*/}
-        </nav>
-    )
+        )
+    }
 }
 
 export default NavBar

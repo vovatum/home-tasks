@@ -1,17 +1,41 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: -webkit-linear-gradient(top, #269991 0%, #e897a2 100%);
+    width: 200px;
+    height: 74px;
+    position: absolute;
+    left: 0;
+    top: 289px;
+    transition: margin .5s;
+    margin: 0 0 0 -154px;
+}
+
+.wrapper:hover {
+    margin: 0 0 0 0;
+}
+
 .nav {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
-.item a {
+.nav a {
     color: #7d6e6e;
     text-decoration: none;
 }
 
-.item a.activeLink {
+.nav a.activeLink {
     color: crimson;
 }
 
+.icon {
+    color: #e897a2;
+}
 
+.iconTuesday {
+    color: #269991;
+}

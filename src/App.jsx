@@ -37,16 +37,12 @@ class App extends React.Component {
             )
         }
     }
-
     render = () => {
 
         return (
             <div className={styles.app}>
-                <div className={styles.nav}>
-                    <NavBar/>
-                </div>
+                <NavBar/>
                 <div className={styles.days}>
-                    {/*<div className={styles.monday}>*/}
                     <Route path='/monday' render={() =>
                         <div className={styles.monday}>
                             <MyNameIs/>
@@ -55,15 +51,11 @@ class App extends React.Component {
                                          onButton={this.onButton}
                                          inputNameTarget={this.inputNameTarget}/>
                         </div>}/>
-                    {/*</div>*/}
-                    {/*<div className={styles.tuesday}>*/}
                     <Route path='/tuesday' render={() =>
                         <div className={styles.tuesday}>
                             Вторник
                         </div>}/>
-                    {/*</div>*/}
                 </div>
-
             </div>
         )
     }
