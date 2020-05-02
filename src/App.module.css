@@ -1,3 +1,34 @@
 .app {
     height: 100vh;
 }
+
+.days {
+    z-index: -1;
+}
+
+.monday {
+
+}
+
+.tuesday {
+    height: 100vh;
+    background-color: #269991;
+    color: #5a4144;
+}
+
+.nav {
+    /*border: dashed 1px white;*/
+    background: -webkit-linear-gradient(top, #269991 0%, #e897a2 100%);
+    width: 200px;
+    height: 60px;
+    position: absolute;
+    left: 0;
+    top: 289px;
+    transition: margin .5s;
+    margin: 0 0 0 -178px;
+}
+
+.nav:hover {
+    margin: 0 0 0 0;
+
+}

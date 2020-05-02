@@ -4,7 +4,9 @@ import styles from './InputName.module.css'
 class InputName extends React.Component {
 
     onTypeInput = (event) => {
-        this.props.createInBuState(event.currentTarget.value)
+        if (event !== '') {
+            this.props.createInBuState(event.currentTarget.value)
+        }
     }
 
     onEnterPress = (event) => {

@@ -1,0 +1,17 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item a {
+    color: #7d6e6e;
+    text-decoration: none;
+}
+
+.item a.activeLink {
+    color: crimson;
+}
+
+

@@ -3,6 +3,9 @@ import styles from './App.module.css';
 import MyNameIs from "./AppComponents/MyNameIs/MyNameIs";
 import Message from "./AppComponents/Message/Messаge";
 import CoInBuBlock from "./AppComponents/CoInBuBlock/CoInBuBlock";
+import NavBar from "./AppComponents/NavBar/NavBar";
+import {Route} from "react-router-dom";
+import 'font-awesome/css/font-awesome.min.css'
 
 class App extends React.Component {
 
@@ -21,7 +24,7 @@ class App extends React.Component {
         if (this.state.name !== '') {
             let countValueTemp = this.state.countValue
             countValueTemp += 1
-            alert(`В инпуте имя, ${this.state.name}`)
+            // alert(`В инпуте имя, ${this.state.name}`)
             let newName = {id: this.state.nameId + 1, name: this.state.name}
             let namesArr = [...this.state.names, newName]
             this.setState(
@@ -39,11 +42,28 @@ class App extends React.Component {
 
         return (
             <div className={styles.app}>
-                <MyNameIs/>
-                <Message/>
-                <CoInBuBlock state={this.state}
-                             onButton={this.onButton}
-                             inputNameTarget={this.inputNameTarget}/>
+                <div className={styles.nav}>
+                    <NavBar/>
+                </div>
+                <div className={styles.days}>
+                    {/*<div className={styles.monday}>*/}
+                    <Route path='/monday' render={() =>
+                        <div className={styles.monday}>
+                            <MyNameIs/>
+                            <Message/>
+                            <CoInBuBlock state={this.state}
+                                         onButton={this.onButton}
+                                         inputNameTarget={this.inputNameTarget}/>
+                        </div>}/>
+                    {/*</div>*/}
+                    {/*<div className={styles.tuesday}>*/}
+                    <Route path='/tuesday' render={() =>
+                        <div className={styles.tuesday}>
+                            Вторник
+                        </div>}/>
+                    {/*</div>*/}
+                </div>
+
             </div>
         )
     }

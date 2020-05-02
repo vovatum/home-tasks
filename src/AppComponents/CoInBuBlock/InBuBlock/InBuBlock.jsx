@@ -1,6 +1,6 @@
 import React from 'react';
-import InputName from "../InputName/InputName";
-import ButtonPush from "../ButtonPush/ButtonPush";
+import InputName from "./InputName/InputName";
+import ButtonPush from "./ButtonPush/ButtonPush";
 import styles from './InBuBlock.module.css'
 
 class CoInBuBlock extends React.Component {
