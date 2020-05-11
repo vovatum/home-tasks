@@ -6,6 +6,7 @@ import CoInBuBlock from "./AppComponents/CoInBuBlock/CoInBuBlock";
 import NavBar from "./AppComponents/NavBar/NavBar";
 import {Route} from "react-router-dom";
 import 'font-awesome/css/font-awesome.min.css'
+import TodoList from "./AppComponents/TodoList/TodoList";
 
 class App extends React.Component {
 
@@ -42,7 +43,6 @@ class App extends React.Component {
         return (
             <div className={styles.app}>
                 <NavBar/>
-                <NavBar/>
                 <div className={styles.days}>
                     <Route path='/monday' render={() =>
                         <div className={styles.monday}>
@@ -54,7 +54,7 @@ class App extends React.Component {
                         </div>}/>
                     <Route path='/tuesday' render={() =>
                         <div className={styles.tuesday}>
-                            Вторник
+                            <TodoList/>
                         </div>}/>
                 </div>
             </div>
