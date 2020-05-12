@@ -29,11 +29,6 @@ class TodoListHeader extends React.Component {
             this.onAddTaskClick()
     }
 
-    onRemoveLocalStorage = () => {
-        this.props.removeLocalStorage()
-        this.setState({title: ''})
-    }
-
     render = () => {
 
         let classForError = this.state.error
@@ -52,7 +47,7 @@ class TodoListHeader extends React.Component {
                            value={this.state.title}/>
                     <button onClick={this.onAddTaskClick}>Add
                     </button>
-                    <button onClick={this.onRemoveLocalStorage}> remove localStorage
+                    <button onClick={this.props.onRemoveLocalStorage}> remove localStorage
                     </button>
                 </div>
             </div>

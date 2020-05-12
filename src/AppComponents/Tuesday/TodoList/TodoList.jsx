@@ -3,6 +3,7 @@ import './TodoList.css';
 import TodoListHeader from "./TodoListHeader";
 import TodoListTasks from "./TodoListTasks";
 import TodoListFooter from "./TodoListFooter";
+import {removeLocalStorage, restoreState, saveState} from "./LocStorFunctions";
 
 class TodoList extends React.Component {
 
@@ -25,7 +26,7 @@ class TodoList extends React.Component {
         this.setState({
             tasks: newTasks
         }, () => {
-            this.saveState()
+            saveState(this.state)
         })
     }
 
@@ -55,32 +56,19 @@ class TodoList extends React.Component {
         this.setState({
             tasks: newTasks
         }, () => {
-            this.saveState()
+            saveState(this.state)
         })
     }
 
-    removeLocalStorage = () => {
-        localStorage.removeItem('our-state')
+    onRemoveLocalStorage = () => {
+        removeLocalStorage()
         this.componentDidMount()
     }
 
-    saveState = () => {
-        let stateAsString = JSON.stringify(this.state)
-        localStorage.setItem('our-state', stateAsString)
-    }
-
-    restoreState = () => {
-        let state = {
-            tasks: [],
-            filterValue: "All"
-        }
-        let stateAsString = localStorage.getItem('our-state')
-        if (stateAsString != null) {
-            state = JSON.parse(stateAsString)
-        }
-        this.setState(state, () => {
+    componentDidMount() {
+        this.setState(restoreState(), () => {
             let maxValueArr = Math.max.apply(null,
-                state.tasks.map(task => task.id))
+                this.state.tasks.map(task => task.id))
             if (maxValueArr === -Infinity) {
                 this.nextTaskId = 0
             } else {
@@ -89,16 +77,12 @@ class TodoList extends React.Component {
         })
     }
 
-    componentDidMount() {
-        this.restoreState()
-    }
-
     render = () => {
 
         return (
             <div className="App">
                 <div className="todoList">
-                    <TodoListHeader removeLocalStorage={this.removeLocalStorage}
+                    <TodoListHeader onRemoveLocalStorage={this.onRemoveLocalStorage}
                                     addTask={this.addTask}/>
                     <TodoListTasks changeStatus={this.changeStatus}
                                    changeTitle={this.changeTitle}
