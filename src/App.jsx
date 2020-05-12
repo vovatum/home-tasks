@@ -1,12 +1,10 @@
 import React from 'react';
 import styles from './App.module.css';
-import MyNameIs from "./AppComponents/MyNameIs/MyNameIs";
-import Message from "./AppComponents/Message/Messаge";
-import CoInBuBlock from "./AppComponents/CoInBuBlock/CoInBuBlock";
-import NavBar from "./AppComponents/NavBar/NavBar";
 import {Route} from "react-router-dom";
 import 'font-awesome/css/font-awesome.min.css'
-import TodoList from "./AppComponents/TodoList/TodoList";
+import NavBar from "./AppComponents/NavBar/NavBar";
+import Monday from "./AppComponents/Monday/Monday";
+import Tuesday from "./AppComponents/Tuesday/Tuesday";
 
 class App extends React.Component {
 
@@ -38,6 +36,7 @@ class App extends React.Component {
             )
         }
     }
+
     render = () => {
 
         return (
@@ -45,21 +44,15 @@ class App extends React.Component {
                 <NavBar/>
                 <div className={styles.days}>
                     <Route path='/monday' render={() =>
-                        <div className={styles.monday}>
-                            <MyNameIs/>
-                            <Message/>
-                            <CoInBuBlock state={this.state}
-                                         onButton={this.onButton}
-                                         inputNameTarget={this.inputNameTarget}/>
-                        </div>}/>
+                        <Monday state={this.state}
+                                onButton={this.onButton}
+                                inputNameTarget={this.inputNameTarget}/>}/>
                     <Route path='/tuesday' render={() =>
-                        <div className={styles.tuesday}>
-                            <TodoList/>
-                        </div>}/>
+                        <Tuesday/>}/>
                 </div>
             </div>
         )
     }
 }
 
-export default App;
+export default App
