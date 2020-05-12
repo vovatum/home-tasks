@@ -10,7 +10,7 @@ class TodoListHeader extends React.Component {
 
     onAddTaskClick = () => {
         let newText = this.state.title
-        this.state.title = '' //null не сработал как раньше
+        this.setState({title: ''}) //null не сработал как раньше
         if (newText === '') {
             this.setState({error: true})
         } else {
@@ -31,7 +31,7 @@ class TodoListHeader extends React.Component {
 
     onRemoveLocalStorage = () => {
         this.props.removeLocalStorage()
-        this.state.title = ''
+        this.setState({title: ''})
     }
 
     render = () => {
