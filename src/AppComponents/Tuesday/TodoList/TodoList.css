@@ -3,12 +3,12 @@
 }
 
 .todoList {
-  width: 500px;
-  margin: 0 auto;
+    width: 500px;
+    margin: 0 auto;
 }
 
 .todoList > div {
-  padding: 10px;
+    padding: 10px;
 }
 
 .todoList-task {
@@ -16,13 +16,20 @@
 }
 
 .filter-active {
-  background-color: blue;
+    background-color: blue;
 }
 
 .error {
-  border-color: red;
+    border-color: red;
 }
 
 .todoList-task.done {
-  opacity: 0.5;
+    opacity: 0.5;
+}
+
+.btn {
+    width: 22px;
+    height: 19px;
+    color: #c9222a;
+    background-color: #e897a2;
 }

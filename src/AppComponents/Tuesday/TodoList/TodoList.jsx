@@ -30,19 +30,21 @@ class TodoList extends React.Component {
         })
     }
 
-    changeFilter = (newFilterValue) => {
-        this.setState({
-            filterValue: newFilterValue
+    removeTask = (taskId) => {
+        this.nextTaskId = 0
+        debugger
+        let newTasks = this.state.tasks.filter(task => {
+            if (task.id !== taskId) {
+                task.id = this.nextTaskId
+                this.nextTaskId++
+                return task
+            }
         })
-    }
-
-    changeStatus = (taskId, isDone) => {
-        this.changeTask(taskId, {isDone: isDone})
-    }
-
-    changeTitle = (taskId, title) => {
-        this.changeTask(taskId, {title: title})
-
+        this.setState({
+            tasks: newTasks
+        }, () => {
+            saveState(this.state)
+        })
     }
 
     changeTask = (taskId, obj) => {
@@ -57,6 +59,21 @@ class TodoList extends React.Component {
             tasks: newTasks
         }, () => {
             saveState(this.state)
+        })
+    }
+
+    changeStatus = (taskId, isDone) => {
+        this.changeTask(taskId, {isDone: isDone})
+    }
+
+    changeTitle = (taskId, title) => {
+        this.changeTask(taskId, {title: title})
+
+    }
+
+    changeFilter = (newFilterValue) => {
+        this.setState({
+            filterValue: newFilterValue
         })
     }
 
@@ -86,6 +103,7 @@ class TodoList extends React.Component {
                                     addTask={this.addTask}/>
                     <TodoListTasks changeStatus={this.changeStatus}
                                    changeTitle={this.changeTitle}
+                                   removeTask={this.removeTask}
                                    tasks={this.state.tasks.filter(task => {
                                        return this.state.filterValue === 'All'
                                            || this.state.filterValue === 'Completed'
