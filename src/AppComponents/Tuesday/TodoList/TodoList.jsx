@@ -11,7 +11,7 @@ class TodoList extends React.Component {
 
     state = {
         tasks: [],
-        filterValue: "All"
+        filterValue: "All",
     }
 
     addTask = (newText) => {
@@ -19,7 +19,7 @@ class TodoList extends React.Component {
             id: this.nextTaskId,
             title: newText,
             isDone: false,
-            priority: 'high'
+            priority: ''
         }
         this.nextTaskId++
         let newTasks = [...this.state.tasks, newTask]
@@ -32,7 +32,6 @@ class TodoList extends React.Component {
 
     removeTask = (taskId) => {
         this.nextTaskId = 0
-        debugger
         let newTasks = this.state.tasks.filter(task => {
             if (task.id !== taskId) {
                 task.id = this.nextTaskId
@@ -60,6 +59,10 @@ class TodoList extends React.Component {
         }, () => {
             saveState(this.state)
         })
+    }
+
+    changePriority = (taskId, priority) => {
+        this.changeTask(taskId, {priority: priority})
     }
 
     changeStatus = (taskId, isDone) => {
@@ -102,6 +105,7 @@ class TodoList extends React.Component {
                     <TodoListHeader onRemoveLocalStorage={this.onRemoveLocalStorage}
                                     addTask={this.addTask}/>
                     <TodoListTasks changeStatus={this.changeStatus}
+                                   changePriority={this.changePriority}
                                    changeTitle={this.changeTitle}
                                    removeTask={this.removeTask}
                                    tasks={this.state.tasks.filter(task => {
