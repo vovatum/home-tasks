@@ -5,6 +5,8 @@ import 'font-awesome/css/font-awesome.min.css'
 import NavBar from "./AppComponents/NavBar/NavBar";
 import Monday from "./AppComponents/Monday/Monday";
 import Tuesday from "./AppComponents/Tuesday/Tuesday";
+import {restoreState, saveState} from "./AppComponents/Tuesday/TodoList/LocStorFunctions";
+import Download from "./AppComponents/Monday/Download";
 
 class App extends React.Component {
 
@@ -12,7 +14,8 @@ class App extends React.Component {
         countValue: 40,
         names: [],
         nameId: 0,
-        name: ''
+        name: '',
+        loading: true
     }
 
     inputNameTarget = (inputNameTarget) => {
@@ -31,10 +34,20 @@ class App extends React.Component {
                     countValue: countValueTemp,
                     names: namesArr,
                     nameId: newName.id,
-                    name: ''
+                    name: '',
+                }, () => {
+                    saveState(this.state)
                 }
             )
         }
+    }
+
+    componentDidMount() {
+        this.setState(restoreState(), () => {
+            setTimeout(() => {
+                this.setState({loading: false})
+            }, 3000)
+        })
     }
 
     render = () => {
@@ -42,14 +55,16 @@ class App extends React.Component {
         return (
             <div className={styles.app}>
                 <NavBar/>
-                <div className={styles.days}>
-                    <Route path='/monday' render={() =>
-                        <Monday state={this.state}
-                                onButton={this.onButton}
-                                inputNameTarget={this.inputNameTarget}/>}/>
-                    <Route path='/tuesday' render={() =>
-                        <Tuesday/>}/>
-                </div>
+                {this.state.loading
+                    ? <Download/>
+                    : <div className={styles.days}>
+                        <Route path='/monday' render={() =>
+                            <Monday state={this.state}
+                                    onButton={this.onButton}
+                                    inputNameTarget={this.inputNameTarget}/>}/>
+                        <Route path='/tuesday' render={() =>
+                            <Tuesday/>}/>
+                    </div>}
             </div>
         )
     }

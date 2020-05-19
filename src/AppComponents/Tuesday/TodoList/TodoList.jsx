@@ -86,7 +86,11 @@ class TodoList extends React.Component {
     }
 
     componentDidMount() {
-        this.setState(restoreState(), () => {
+        let state = {
+            tasks: [],
+            filterValue: "All"
+        }
+        this.setState(restoreState(state), () => {
             let maxValueArr = Math.max.apply(null,
                 this.state.tasks.map(task => task.id))
             if (maxValueArr === -Infinity) {
