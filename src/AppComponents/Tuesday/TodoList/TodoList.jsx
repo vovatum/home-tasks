@@ -3,7 +3,7 @@ import './TodoList.css';
 import TodoListHeader from "./TodoListHeader";
 import TodoListTasks from "./TodoListTasks";
 import TodoListFooter from "./TodoListFooter";
-import {removeLocalStorage, restoreState, saveState} from "./LocStorFunctions";
+import {removeLocalStorage, restoreState, saveState} from "../../LocStorFunctions";
 
 class TodoList extends React.Component {
 
@@ -77,6 +77,8 @@ class TodoList extends React.Component {
     changeFilter = (newFilterValue) => {
         this.setState({
             filterValue: newFilterValue
+        }, () => {
+            saveState(this.state)
         })
     }
 

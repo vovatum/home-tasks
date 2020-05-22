@@ -5,7 +5,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import NavBar from "./AppComponents/NavBar/NavBar";
 import Monday from "./AppComponents/Monday/Monday";
 import Tuesday from "./AppComponents/Tuesday/Tuesday";
-import {restoreState, saveState} from "./AppComponents/Tuesday/TodoList/LocStorFunctions";
+import {restoreState, saveState} from "./AppComponents/LocStorFunctions";
 import Download from "./AppComponents/Monday/Download";
 
 class App extends React.Component {
