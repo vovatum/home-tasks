@@ -1,7 +1,7 @@
 import React from 'react';
 import './TodoList.css';
 
-class TodoListTask extends React.Component {
+class   TodoListTask extends React.Component {
 
     state = {
         editMode: false,

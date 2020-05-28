@@ -19,7 +19,10 @@ class TodoList extends React.Component {
             id: this.nextTaskId,
             title: newText,
             isDone: false,
-            priority: ''
+            priority: '',
+            created: new Date(),
+            updated: '',
+            finished: ''
         }
         this.nextTaskId++
         let newTasks = [...this.state.tasks, newTask]
@@ -47,6 +50,8 @@ class TodoList extends React.Component {
     }
 
     changeTask = (taskId, obj) => {
+        debugger
+
         let newTasks = this.state.tasks.map(task => {
             if (task.id !== taskId) {
                 return task
@@ -62,15 +67,24 @@ class TodoList extends React.Component {
     }
 
     changePriority = (taskId, priority) => {
-        this.changeTask(taskId, {priority: priority})
+        this.changeTask(taskId, {
+            priority: priority,
+            updated: new Date()
+        })
     }
 
     changeStatus = (taskId, isDone) => {
-        this.changeTask(taskId, {isDone: isDone})
+        this.changeTask(taskId, {
+            isDone: isDone,
+            finished: new Date()
+        })
     }
 
     changeTitle = (taskId, title) => {
-        this.changeTask(taskId, {title: title})
+        this.changeTask(taskId, {
+            title: title,
+            updated: new Date()
+        })
 
     }
 
@@ -104,30 +118,35 @@ class TodoList extends React.Component {
     }
 
     render = () => {
-
         return (
             <div className="App">
                 <div className="todoList">
-                    <TodoListHeader onRemoveLocalStorage={this.onRemoveLocalStorage}
-                                    addTask={this.addTask}/>
-                    <TodoListTasks changeStatus={this.changeStatus}
-                                   changePriority={this.changePriority}
-                                   changeTitle={this.changeTitle}
-                                   removeTask={this.removeTask}
-                                   tasks={this.state.tasks.filter(task => {
-                                       return this.state.filterValue === 'All'
-                                           || this.state.filterValue === 'Completed'
-                                           && task.isDone === true
-                                           || this.state.filterValue === 'Active'
-                                           && task.isDone === false
-                                   })}/>
-                    <TodoListFooter filterValue={this.state.filterValue}
-                                    changeFilter={this.changeFilter}/>
+                    <TodoListHeader
+                        onRemoveLocalStorage={this.onRemoveLocalStorage}
+                        addTask={this.addTask}
+                    />
+                    <TodoListTasks
+                        changeStatus={this.changeStatus}
+                        changePriority={this.changePriority}
+                        changeTitle={this.changeTitle}
+                        removeTask={this.removeTask}
+                        tasks={this.state.tasks.filter(task => {
+                            return this.state.filterValue === 'All'
+                                || this.state.filterValue === 'Completed'
+                                && task.isDone === true
+                                || this.state.filterValue === 'Active'
+                                && task.isDone === false
+                        })}/>
+                    <TodoListFooter
+                        filterValue={this.state.filterValue}
+                        changeFilter={this.changeFilter}
+                    />
                 </div>
             </div>
         )
     }
 }
+
 
 export default TodoList
 

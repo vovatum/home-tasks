@@ -6,7 +6,7 @@ import NavBar from "./AppComponents/NavBar/NavBar";
 import Monday from "./AppComponents/Monday/Monday";
 import Tuesday from "./AppComponents/Tuesday/Tuesday";
 import {restoreState, saveState} from "./AppComponents/LocStorFunctions";
-import Download from "./AppComponents/Monday/Download";
+import Download from "./AppComponents/Download/Download";
 
 class App extends React.Component {
 
@@ -15,7 +15,7 @@ class App extends React.Component {
         names: [],
         nameId: 0,
         name: '',
-        loading: true
+        // loading: true
     }
 
     inputNameTarget = (inputNameTarget) => {
