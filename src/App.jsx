@@ -59,9 +59,11 @@ class App extends React.Component {
                     ? <Download/>
                     : <div className={styles.days}>
                         <Route path='/monday' render={() =>
-                            <Monday state={this.state}
+                            <Monday
+                                state={this.state}
                                     onButton={this.onButton}
-                                    inputNameTarget={this.inputNameTarget}/>}/>
+                                    inputNameTarget={this.inputNameTarget}
+                            />}/>
                         <Route path='/tuesday' render={() =>
                             <Tuesday/>}/>
                     </div>}

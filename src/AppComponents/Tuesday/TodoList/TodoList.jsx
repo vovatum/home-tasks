@@ -33,6 +33,15 @@ class TodoList extends React.Component {
         })
     }
 
+    onShowTaskCreated = (taskId) => {
+        let events = this.state.tasks.map(task => {
+            if (task.id === taskId) {
+                return task.created
+            }
+        })
+        alert(`${'Task created'} ${events}`)
+    }
+
     removeTask = (taskId) => {
         this.nextTaskId = 0
         let newTasks = this.state.tasks.filter(task => {
@@ -50,8 +59,6 @@ class TodoList extends React.Component {
     }
 
     changeTask = (taskId, obj) => {
-        debugger
-
         let newTasks = this.state.tasks.map(task => {
             if (task.id !== taskId) {
                 return task
@@ -126,6 +133,7 @@ class TodoList extends React.Component {
                         addTask={this.addTask}
                     />
                     <TodoListTasks
+                        onShowTaskCreated={this.onShowTaskCreated}
                         changeStatus={this.changeStatus}
                         changePriority={this.changePriority}
                         changeTitle={this.changeTitle}

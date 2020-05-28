@@ -1,7 +1,7 @@
 import React from 'react';
 import './TodoList.css';
 
-class   TodoListTask extends React.Component {
+class TodoListTask extends React.Component {
 
     state = {
         editMode: false,
@@ -31,6 +31,11 @@ class   TodoListTask extends React.Component {
         this.props.changePriority(this.props.task.id, event.currentTarget.value)
     }
 
+    onShowTaskCreated=()=>{
+        this.props.onShowTaskCreated(this.props.task.id)
+    }
+
+
     render = () => {
 
         let classTaskIsDone = this.props.task.isDone
@@ -38,20 +43,28 @@ class   TodoListTask extends React.Component {
             : "todoList-task"
 
         return (
-            <div className={classTaskIsDone}>
-                <input type="checkbox"
-                       checked={this.props.task.isDone}
-                       onChange={this.onIsDoneChanged}/>
+            <div className={classTaskIsDone}
+                 onMouseOver={this.onShowTaskCreated}
+            >
+                <input
+                    type="checkbox"
+                    checked={this.props.task.isDone}
+                    onChange={this.onIsDoneChanged}
+                />
                 {this.state.editMode
-                    ? <input autoFocus={true}
-                             onChange={this.onTitleChanged}
-                             onBlur={this.deactivateEditMode}
-                             value={this.props.task.title}/>
+                    ? <input
+                        autoFocus={true}
+                        onChange={this.onTitleChanged}
+                        onBlur={this.deactivateEditMode}
+                        value={this.props.task.title}
+                    />
                     : <span onClick={this.activateEditMode}>
                 {this.props.task.id}-{this.props.task.title}</span>
                 }, priority:
-                <select value={this.props.task.priority}
-                        onChange={this.onChangePriority}>
+                <select
+                    value={this.props.task.priority}
+                    onChange={this.onChangePriority}
+                >
                     <option value="high">high</option>
                     <option value="medium">medium</option>
                     <option value="low">low</option>
