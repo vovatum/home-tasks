@@ -31,12 +31,11 @@ class TodoListTask extends React.Component {
         this.props.changePriority(this.props.task.id, event.currentTarget.value)
     }
 
-    onShowTaskCreated=()=>{
-        this.props.onShowTaskCreated(this.props.task.id)
-    }
-
-
     render = () => {
+
+        let time = `${'Task created:'} ${this.props.task.created}
+             ${'Task updated:'} ${this.props.task.updated}
+             ${'Task finished:'} ${this.props.task.finished}`
 
         let classTaskIsDone = this.props.task.isDone
             ? `${"todoList-task"} ${'done'}`
@@ -44,7 +43,7 @@ class TodoListTask extends React.Component {
 
         return (
             <div className={classTaskIsDone}
-                 onMouseOver={this.onShowTaskCreated}
+                 data-tooltip={time}
             >
                 <input
                     type="checkbox"

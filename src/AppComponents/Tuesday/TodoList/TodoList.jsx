@@ -21,8 +21,8 @@ class TodoList extends React.Component {
             isDone: false,
             priority: '',
             created: new Date(),
-            updated: '',
-            finished: ''
+            updated: 'not updated',
+            finished: 'not finished'
         }
         this.nextTaskId++
         let newTasks = [...this.state.tasks, newTask]
@@ -31,15 +31,6 @@ class TodoList extends React.Component {
         }, () => {
             saveState(this.state)
         })
-    }
-
-    onShowTaskCreated = (taskId) => {
-        let events = this.state.tasks.map(task => {
-            if (task.id === taskId) {
-                return task.created
-            }
-        })
-        alert(`${'Task created'} ${events}`)
     }
 
     removeTask = (taskId) => {
@@ -133,7 +124,6 @@ class TodoList extends React.Component {
                         addTask={this.addTask}
                     />
                     <TodoListTasks
-                        onShowTaskCreated={this.onShowTaskCreated}
                         changeStatus={this.changeStatus}
                         changePriority={this.changePriority}
                         changeTitle={this.changeTitle}
