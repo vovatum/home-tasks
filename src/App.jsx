@@ -7,6 +7,7 @@ import Monday from "./AppComponents/Monday/Monday";
 import Tuesday from "./AppComponents/Tuesday/Tuesday";
 import {restoreState, saveState} from "./AppComponents/LocStorFunctions";
 import Download from "./AppComponents/Download/Download";
+import {connect} from "react-redux";
 
 class App extends React.Component {
 
@@ -26,7 +27,7 @@ class App extends React.Component {
         if (this.state.name !== '') {
             let countValueTemp = this.state.countValue
             countValueTemp += 1
-            // alert(`В инпуте имя, ${this.state.name}`)
+            alert(`В инпуте имя, ${this.state.name}`)
             let newName = {id: this.state.nameId + 1, name: this.state.name}
             let namesArr = [...this.state.names, newName]
             this.setState(
@@ -45,24 +46,25 @@ class App extends React.Component {
     componentDidMount() {
         this.setState(restoreState(), () => {
             setTimeout(() => {
-                this.setState({loading: false})
+                // console.log(state)
+                this.props.loading()
             }, 3000)
         })
     }
 
     render = () => {
-
+        // console.log(state)
         return (
             <div className={styles.app}>
                 <NavBar/>
-                {this.state.loading
+                {this.props.state
                     ? <Download/>
                     : <div className={styles.days}>
                         <Route path='/monday' render={() =>
                             <Monday
                                 state={this.state}
-                                    onButton={this.onButton}
-                                    inputNameTarget={this.inputNameTarget}
+                                onButton={this.onButton}
+                                inputNameTarget={this.inputNameTarget}
                             />}/>
                         <Route path='/tuesday' render={() =>
                             <Tuesday/>}/>
@@ -72,4 +74,25 @@ class App extends React.Component {
     }
 }
 
-export default App
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        loading: state.loading
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loading: () => {
+            const action = {
+                type: "SET_LOADING",
+                loading: false
+            }
+            dispatch(action)
+        }
+    }
+}
+
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App)
+
+export default ConnectedApp
