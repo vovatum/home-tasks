@@ -16,7 +16,6 @@ class App extends React.Component {
         names: [],
         nameId: 0,
         name: '',
-        // loading: true
     }
 
     inputNameTarget = (inputNameTarget) => {
@@ -46,18 +45,16 @@ class App extends React.Component {
     componentDidMount() {
         this.setState(restoreState(), () => {
             setTimeout(() => {
-                // console.log(state)
-                this.props.loading()
+                this.props.loadingFn()
             }, 3000)
         })
     }
 
     render = () => {
-        // console.log(state)
         return (
             <div className={styles.app}>
                 <NavBar/>
-                {this.props.state
+                {this.props.loading
                     ? <Download/>
                     : <div className={styles.days}>
                         <Route path='/monday' render={() =>
@@ -75,7 +72,6 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         loading: state.loading
     }
@@ -83,7 +79,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loading: () => {
+        loadingFn: () => {
             const action = {
                 type: "SET_LOADING",
                 loading: false
