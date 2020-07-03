@@ -18,17 +18,33 @@ class NavBar extends React.Component {
         this.setState({icon: styles.iconTuesday})
     }
 
+    changeClassIconWednesday = () => {
+        this.setState({icon: styles.iconWednesday})
+    }
+
     render = () => {
 
         return (
             <div className={styles.wrapper}>
                 <nav className={styles.nav}>
-                    <NavLink to={"/monday"}
-                             activeClassName={styles.activeLink}
-                             onClick={this.changeClassIcon}>Понедельник</NavLink>
-                    <NavLink to={'/tuesday'}
-                             activeClassName={styles.activeLink}
-                             onClick={this.changeClassIconTuesday}>Вторник</NavLink>
+                    <NavLink
+                        to={"/monday"}
+                        activeClassName={styles.activeLink}
+                        onClick={this.changeClassIcon}
+                    >Понедельник
+                    </NavLink>
+                    <NavLink
+                        to={'/tuesday'}
+                        activeClassName={styles.activeLink}
+                        onClick={this.changeClassIconTuesday}
+                    >Вторник
+                    </NavLink>
+                    <NavLink
+                        to={'/wednesday'}
+                        activeClassName={styles.activeLink}
+                        onClick={this.changeClassIconWednesday}
+                    >Среда
+                    </NavLink>
                 </nav>
                 <FontAwesomeIcon className={this.state.icon}
                                  icon={faBars}/>

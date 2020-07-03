@@ -17,3 +17,11 @@
     background-color: #269991;
     color: #5a4144;
 }
+
+.wednesday {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #3e0007;
+    color: floralwhite;
+}

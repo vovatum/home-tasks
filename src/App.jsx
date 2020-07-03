@@ -8,6 +8,7 @@ import Tuesday from "./AppComponents/Tuesday/Tuesday";
 import {restoreState, saveState} from "./AppComponents/LocStorFunctions";
 import Download from "./AppComponents/Download/Download";
 import {connect} from "react-redux";
+import Wednesday from "./AppComponents/Wednesday/Wednesday";
 
 class App extends React.Component {
 
@@ -46,7 +47,7 @@ class App extends React.Component {
         this.setState(restoreState(), () => {
             setTimeout(() => {
                 this.props.loadingFn()
-            }, 3000)
+            }, 700)
         })
     }
 
@@ -65,6 +66,8 @@ class App extends React.Component {
                             />}/>
                         <Route path='/tuesday' render={() =>
                             <Tuesday/>}/>
+                        <Route path='/wednesday' render={() =>
+                            <Wednesday/>}/>
                     </div>}
             </div>
         )

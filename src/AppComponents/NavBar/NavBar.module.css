@@ -4,7 +4,7 @@
     justify-content: space-around;
     background: -webkit-linear-gradient(top, #269991 0%, #e897a2 100%);
     width: 200px;
-    height: 74px;
+    height: 100px;
     position: absolute;
     left: 0;
     top: 289px;
@@ -38,4 +38,8 @@
 
 .iconTuesday {
     color: #269991;
+}
+
+.iconWednesday {
+    color: #5a4144;
 }
