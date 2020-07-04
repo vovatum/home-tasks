@@ -5,7 +5,7 @@ const initialState = {
     loading: true
 }
 
-const reducer = (state = initialState, action) => {
+const loadingReducer = (state = initialState, action) => {
     switch (action.type) {
         case "SET_LOADING":
             return {
@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
 }
 
 let reducers = combineReducers({
-    firstReducer: reducer,
+    preloader: loadingReducer,
     settings: settingsReducer
 })
 

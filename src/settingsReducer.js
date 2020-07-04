@@ -1,8 +1,8 @@
 let initialState = {
-    style: null
+    style: 'Брют'
 }
 
-const settingsReducer = (state=initialState, action) =>{
+const settingsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'CHANGE_STYLE':
             return {

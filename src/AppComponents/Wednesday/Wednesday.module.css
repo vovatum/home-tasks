@@ -1,0 +1,27 @@
+.bordo {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #3e0007;
+    color: floralwhite;
+}
+
+.rose {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #e0828d;
+    color: #a90e32;
+}
+
+.brut {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #ddf5cc;
+    color: #718a38;
+}
+
+.iconWednesday {
+    color: #5a4144;
+}

@@ -67,7 +67,10 @@ class App extends React.Component {
                         <Route path='/tuesday' render={() =>
                             <Tuesday/>}/>
                         <Route path='/wednesday' render={() =>
-                            <Wednesday/>}/>
+                            <Wednesday
+                                changedStyles={this.props.changedStyles}
+                                state={this.props.style}
+                            />}/>
                     </div>}
             </div>
         )
@@ -76,7 +79,8 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.loading
+        loading: state.preloader.loading,
+        style: state.settings.style
     }
 }
 
@@ -86,6 +90,13 @@ const mapDispatchToProps = (dispatch) => {
             const action = {
                 type: "SET_LOADING",
                 loading: false
+            }
+            dispatch(action)
+        },
+        changedStyles: (value) => {
+            const action = {
+                type: 'CHANGE_STYLE',
+                style: value
             }
             dispatch(action)
         }
