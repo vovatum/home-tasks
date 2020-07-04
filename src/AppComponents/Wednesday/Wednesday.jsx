@@ -11,30 +11,8 @@ class Wednesday extends React.Component {
         ]
     }
 
-    componentDidMount() {
-        this.setState({
-            ...this.state,
-            themes: this.state.themes.map(theme => {
-                if (theme.name === this.props.state) {
-                    return {
-                        ...theme,
-                        checked: true
-                    }
-                } else {
-                    return {
-                        ...theme,
-                        checked: false
-                    }
-                }
-            })
-        })
-    }
-
     onChangedStyles = (event) => {
         this.props.changedStyles(event.target.value)
-        // setTimeout(() => {
-        this.componentDidMount()
-        // }, 300)
     }
 
     render() {
@@ -51,9 +29,27 @@ class Wednesday extends React.Component {
                 classWednesday = styles.bordo
         }
 
+        let checked = {
+            ...this.state,
+            themes: this.state.themes.map(theme => {
+                if (theme.name === this.props.state) {
+                    return {
+                        ...theme,
+                        checked: true
+                    }
+                } else {
+                    return {
+                        ...theme,
+                        checked: false
+                    }
+                }
+            })
+        }
+
+
         return (
             <div className={classWednesday}>
-                {this.state.themes.map(theme => {
+                {checked.themes.map(theme => {
                     return (
                         <span>
                         <input
