@@ -23,17 +23,30 @@ class Wednesday extends React.Component {
         })
     }
 
-    postSend = (success) => {
-        axios.post(`https://neko-cafe-back.herokuapp.com/auth/test`,
+    tryCatch = async (f) => {
+        // debugger
+        try {
+            const response = await f()
+            console.log('answer: ', response.data)
+            return response
+        } catch (e) {
+            console.log('error: ', {...e})
+            return 'error'
+        }
+    }
+
+    postSend = () => {
+        return axios.post(`https://neko-cafe-back.herokuapp.com/auth/test`,
             {success: this.state.isDone}
         )
             .then(res => {
-                console.log(res)
+                return res
             })
     }
 
+    onClick = () => this.tryCatch(this.postSend)
+
     render() {
-// debugger
         let classWednesday
         switch (this.props.state) {
             case 'Брют':
@@ -86,7 +99,7 @@ class Wednesday extends React.Component {
                         onChange={this.isDoneChanged}
                     />
                     <button
-                        onClick={this.postSend}
+                        onClick={this.onClick}
                     >SEND
                     </button>
                 </div>
