@@ -1,27 +1,28 @@
 .bordo {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background-color: #3e0007;
     color: floralwhite;
+    background-color: #3e0007;
+    height: 100vh;
 }
 
 .rose {
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #e0828d;
     color: #a90e32;
+    background-color: #e0828d;
+
+    composes: bordo;
 }
 
 .brut {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #ddf5cc;
     color: #718a38;
+    background-color: #ddf5cc;
+
+    composes: bordo;
 }
 
 .iconWednesday {
+    margin-bottom: 60px;
+
     color: #5a4144;
 }

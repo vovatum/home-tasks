@@ -2,7 +2,7 @@ import {combineReducers, createStore} from "redux";
 import settingsReducer from "./settingsReducer";
 
 const initialState = {
-    loading: true
+    loading: false
 }
 
 const loadingReducer = (state = initialState, action) => {

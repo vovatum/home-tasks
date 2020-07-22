@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Wednesday.module.css';
+import axios from "axios";
 
 class Wednesday extends React.Component {
 
@@ -8,15 +9,31 @@ class Wednesday extends React.Component {
             {name: 'Брют', checked: null},
             {name: 'Розовое сухое', checked: null},
             {name: 'Бордо', checked: null}
-        ]
+        ],
+        isDone: false
     }
 
     onChangedStyles = (event) => {
         this.props.changedStyles(event.target.value)
     }
 
-    render() {
+    isDoneChanged = (event) => {
+        this.setState({
+            isDone: event.currentTarget.checked
+        })
+    }
 
+    postSend = (success) => {
+        axios.post(`https://neko-cafe-back.herokuapp.com/auth/test`,
+            {success: this.state.isDone}
+        )
+            .then(res => {
+                console.log(res)
+            })
+    }
+
+    render() {
+// debugger
         let classWednesday
         switch (this.props.state) {
             case 'Брют':
@@ -46,7 +63,6 @@ class Wednesday extends React.Component {
             })
         }
 
-
         return (
             <div className={classWednesday}>
                 {checked.themes.map(theme => {
@@ -63,6 +79,17 @@ class Wednesday extends React.Component {
                     </span>
                     )
                 })}
+                <div>
+                    <input
+                        type="checkbox"
+                        checked={this.state.isDone}
+                        onChange={this.isDoneChanged}
+                    />
+                    <button
+                        onClick={this.postSend}
+                    >SEND
+                    </button>
+                </div>
             </div>
         )
     }
