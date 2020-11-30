@@ -13,24 +13,8 @@ class Wednesday extends React.Component {
         isDone: false
     }
 
-    onChangedStyles = (event) => {
-        this.props.changedStyles(event.target.value)
-    }
-    isDoneChanged = (event) => {
-        this.setState({
-            isDone: event.currentTarget.checked
-        })
-    }
-    tryCatch = async (f) => {
-        try {
-            const response = await f()
-            console.log('answer: ', response.data)
-            return response
-        } catch (e) {
-            console.log('error: ', {...e})
-            return 'error'
-        }
-    }
+    onChangedStyles = (e) => this.props.changedStyles(e.target.value)
+    isDoneChanged = (e) => this.setState({isDone: e.currentTarget.checked})
     onClick = () => api.tryCatch(() => api.postSend(this.state.isDone))
 
     render() {
@@ -50,7 +34,6 @@ class Wednesday extends React.Component {
             ...this.state,
             themes: this.state.themes.map(theme => {
                 return theme.name === this.props.state
-
                     ? {
                         ...theme,
                         checked: true
