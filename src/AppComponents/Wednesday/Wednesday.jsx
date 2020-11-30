@@ -16,15 +16,12 @@ class Wednesday extends React.Component {
     onChangedStyles = (event) => {
         this.props.changedStyles(event.target.value)
     }
-
     isDoneChanged = (event) => {
         this.setState({
             isDone: event.currentTarget.checked
         })
     }
-
     tryCatch = async (f) => {
-        // debugger
         try {
             const response = await f()
             console.log('answer: ', response.data)
@@ -34,16 +31,11 @@ class Wednesday extends React.Component {
             return 'error'
         }
     }
-
     postSend = () => {
         return axios.post(`https://neko-cafe-back.herokuapp.com/auth/test`,
             {success: this.state.isDone}
         )
-            .then(res => {
-                return res
-            })
     }
-
     onClick = () => this.tryCatch(this.postSend)
 
     render() {
@@ -62,17 +54,16 @@ class Wednesday extends React.Component {
         let checked = {
             ...this.state,
             themes: this.state.themes.map(theme => {
-                if (theme.name === this.props.state) {
-                    return {
+                return theme.name === this.props.state
+
+                    ? {
                         ...theme,
                         checked: true
                     }
-                } else {
-                    return {
+                    : {
                         ...theme,
                         checked: false
                     }
-                }
             })
         }
 
@@ -89,7 +80,7 @@ class Wednesday extends React.Component {
                             onChange={this.onChangedStyles}
                         />
                             {theme.name}
-                    </span>
+                         </span>
                     )
                 })}
                 <div>

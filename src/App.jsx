@@ -83,7 +83,6 @@ const mapStateToProps = (state) => {
         style: state.settings.style
     }
 }
-
 const mapDispatchToProps = (dispatch) => {
     return {
         loadingFn: () => {
