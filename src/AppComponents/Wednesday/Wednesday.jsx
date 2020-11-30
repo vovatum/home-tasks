@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Wednesday.module.css';
-import axios from "axios";
+import * as api from '../../dal/postSendApi'
 
 class Wednesday extends React.Component {
 
@@ -31,12 +31,7 @@ class Wednesday extends React.Component {
             return 'error'
         }
     }
-    postSend = () => {
-        return axios.post(`https://neko-cafe-back.herokuapp.com/auth/test`,
-            {success: this.state.isDone}
-        )
-    }
-    onClick = () => this.tryCatch(this.postSend)
+    onClick = () => api.tryCatch(() => api.postSend(this.state.isDone))
 
     render() {
         let classWednesday
@@ -71,7 +66,7 @@ class Wednesday extends React.Component {
             <div className={classWednesday}>
                 {checked.themes.map(theme => {
                     return (
-                        <span>
+                        <span key={theme.name}>
                         <input
                             type={'radio'}
                             name={'theme'}

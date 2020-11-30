@@ -32,9 +32,9 @@ class TodoList extends React.Component {
             saveState(this.state)
         })
     }
-
     removeTask = (taskId) => {
         this.nextTaskId = 0
+        // eslint-disable-next-line array-callback-return
         let newTasks = this.state.tasks.filter(task => {
             if (task.id !== taskId) {
                 task.id = this.nextTaskId
@@ -48,7 +48,6 @@ class TodoList extends React.Component {
             saveState(this.state)
         })
     }
-
     changeTask = (taskId, obj) => {
         let newTasks = this.state.tasks.map(task => {
             if (task.id !== taskId) {
@@ -63,21 +62,18 @@ class TodoList extends React.Component {
             saveState(this.state)
         })
     }
-
     changePriority = (taskId, priority) => {
         this.changeTask(taskId, {
             priority: priority,
             updated: new Date()
         })
     }
-
     changeStatus = (taskId, isDone) => {
         this.changeTask(taskId, {
             isDone: isDone,
             finished: new Date()
         })
     }
-
     changeTitle = (taskId, title) => {
         this.changeTask(taskId, {
             title: title,
@@ -85,7 +81,6 @@ class TodoList extends React.Component {
         })
 
     }
-
     changeFilter = (newFilterValue) => {
         this.setState({
             filterValue: newFilterValue
@@ -93,12 +88,10 @@ class TodoList extends React.Component {
             saveState(this.state)
         })
     }
-
     onRemoveLocalStorage = () => {
         removeLocalStorage()
         this.componentDidMount()
     }
-
     componentDidMount() {
         let state = {
             tasks: [],
@@ -130,10 +123,10 @@ class TodoList extends React.Component {
                         removeTask={this.removeTask}
                         tasks={this.state.tasks.filter(task => {
                             return this.state.filterValue === 'All'
-                                || this.state.filterValue === 'Completed'
-                                && task.isDone === true
-                                || this.state.filterValue === 'Active'
-                                && task.isDone === false
+                                || (this.state.filterValue === 'Completed'
+                                    && task.isDone === true)
+                                || (this.state.filterValue === 'Active'
+                                    && task.isDone === false)
                         })}/>
                     <TodoListFooter
                         filterValue={this.state.filterValue}
