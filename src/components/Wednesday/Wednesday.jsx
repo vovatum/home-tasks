@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Wednesday.module.css';
 import * as api from '../../dal/postSendApi'
+import Download from "../universal/Download/Download";
 
 class Wednesday extends React.Component {
 
@@ -51,7 +52,6 @@ class Wednesday extends React.Component {
                     }
             })
         }
-        // let responseMessage = this.state.response === true ? 'Успех' : `Запрос не удался :(`
 
         return (
             <div className={classWednesday}>
@@ -78,7 +78,10 @@ class Wednesday extends React.Component {
                     >SEND
                     </button>
                 </div>
-                <span>{this.state.response}</span>
+                {this.state.downloading
+                    ? <Download/>
+                    : <span className={'spinner'}>{this.state.response}</span>
+                }
             </div>
         )
     }
