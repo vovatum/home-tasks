@@ -10,12 +10,19 @@ class Wednesday extends React.Component {
             {name: 'Розовое сухое', checked: null},
             {name: 'Бордо', checked: null}
         ],
-        isDone: false
+        isDone: false,
+        response: '',
+        downloading: false
     }
 
     onChangedStyles = (e) => this.props.changedStyles(e.target.value)
     isDoneChanged = (e) => this.setState({isDone: e.currentTarget.checked})
-    onClick = () => api.tryCatch(() => api.postSend(this.state.isDone))
+    onClick = async () => {
+        this.setState({downloading: true})
+        await api.postSend(this.state.isDone) === true
+            ? this.setState({response: 'Успех', downloading: false})
+            : this.setState({response: `Запрос не удался :(`, downloading: false})
+    }
 
     render() {
         let classWednesday
@@ -44,34 +51,34 @@ class Wednesday extends React.Component {
                     }
             })
         }
+        // let responseMessage = this.state.response === true ? 'Успех' : `Запрос не удался :(`
 
         return (
             <div className={classWednesday}>
                 {checked.themes.map(theme => {
                     return (
                         <span key={theme.name}>
-                        <input
-                            type={'radio'}
-                            name={'theme'}
-                            value={theme.name}
-                            checked={theme.checked}
-                            onChange={this.onChangedStyles}
+                        <input type={'radio'}
+                               name={'theme'}
+                               value={theme.name}
+                               checked={theme.checked}
+                               onChange={this.onChangedStyles}
                         />
                             {theme.name}
                          </span>
                     )
                 })}
                 <div>
-                    <input
-                        type="checkbox"
-                        checked={this.state.isDone}
-                        onChange={this.isDoneChanged}
+                    <input type="checkbox"
+                           checked={this.state.isDone}
+                           onChange={this.isDoneChanged}
                     />
-                    <button
-                        onClick={this.onClick}
+                    <button disabled={this.state.downloading}
+                            onClick={this.onClick}
                     >SEND
                     </button>
                 </div>
+                <span>{this.state.response}</span>
             </div>
         )
     }

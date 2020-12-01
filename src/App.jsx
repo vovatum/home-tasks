@@ -2,13 +2,13 @@ import React from 'react';
 import styles from './App.module.css';
 import {Route} from "react-router-dom";
 import 'font-awesome/css/font-awesome.min.css'
-import NavBar from "./AppComponents/NavBar/NavBar";
-import Monday from "./AppComponents/Monday/Monday";
-import Tuesday from "./AppComponents/Tuesday/Tuesday";
-import {restoreState, saveState} from "./AppComponents/LocStorFunctions";
-import Download from "./AppComponents/Download/Download";
+import NavBar from "./components/NavBar/NavBar";
+import Monday from "./components/Monday/Monday";
+import Tuesday from "./components/Tuesday/Tuesday";
+import {restoreState, saveState} from "./components/universal/LocStorFunctions";
+import Download from "./components/universal/Download/Download";
 import {connect} from "react-redux";
-import Wednesday from "./AppComponents/Wednesday/Wednesday";
+import Wednesday from "./components/Wednesday/Wednesday";
 
 class App extends React.Component {
 

@@ -3,7 +3,7 @@ import './TodoList.css';
 import TodoListHeader from "./TodoListHeader";
 import TodoListTasks from "./TodoListTasks";
 import TodoListFooter from "./TodoListFooter";
-import {removeLocalStorage, restoreState, saveState} from "../../LocStorFunctions";
+import {removeLocalStorage, restoreState, saveState} from "../../universal/LocStorFunctions";
 
 class TodoList extends React.Component {
 
