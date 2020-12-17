@@ -1,68 +1,41 @@
 import React from 'react';
 import styles from './Wednesday.module.css';
-import * as api from '../../dal/postSendApi'
 import Download from "../universal/Download/Download";
 
 class Wednesday extends React.Component {
 
     state = {
-        themes: [
-            {name: 'Брют', checked: null},
-            {name: 'Розовое сухое', checked: null},
-            {name: 'Бордо', checked: null}
-        ],
-        isDone: false,
-        response: '',
-        downloading: false
+        classWednesday: styles.bordo,
+        checkboxSendIsDone: false,
+        downloading: false,
     }
 
-    onChangedStyles = (e) => this.props.changedStyles(e.target.value)
-    isDoneChanged = (e) => this.setState({isDone: e.currentTarget.checked})
-    onClick = async () => {
+    onChangeTheme = (e) => {
+        this.props.changeTheme(e.target.value)
+        this.setState({classWednesday: e.target.value})
+    }
+    onChangeSendCheckbox = (e) => {
+        this.setState({checkboxSendIsDone: e.currentTarget.checked})
+    }
+    onClick = () => {
         this.setState({downloading: true})
-        await api.postSend(this.state.isDone) === true
-            ? this.setState({response: 'Успех', downloading: false})
-            : this.setState({response: `Запрос не удался :(`, downloading: false})
+        this.props.getPostRequest(this.state.checkboxSendIsDone)
+        // true
+        //     ? this.setState({response: 'Успех', downloading: false})
+        //     : this.setState({response: `Запрос не удался :(`, downloading: false})
     }
 
     render() {
-        let classWednesday
-        switch (this.props.state) {
-            case 'Брют':
-                classWednesday = styles.brut
-                break
-            case 'Розовое сухое':
-                classWednesday = styles.rose
-                break
-            default:
-                classWednesday = styles.bordo
-        }
-
-        let checked = {
-            ...this.state,
-            themes: this.state.themes.map(theme => {
-                return theme.name === this.props.state
-                    ? {
-                        ...theme,
-                        checked: true
-                    }
-                    : {
-                        ...theme,
-                        checked: false
-                    }
-            })
-        }
-
+        console.log(this.props)
         return (
-            <div className={classWednesday}>
-                {checked.themes.map(theme => {
+            <div className={this.state.classWednesday}>
+                {this.props.themes.map(theme => {
                     return (
                         <span key={theme.name}>
                         <input type={'radio'}
-                               name={'theme'}
-                               value={theme.name}
+                               value={theme.class}
                                checked={theme.checked}
-                               onChange={this.onChangedStyles}
+                               onChange={this.onChangeTheme}
                         />
                             {theme.name}
                          </span>
@@ -70,8 +43,8 @@ class Wednesday extends React.Component {
                 })}
                 <div>
                     <input type="checkbox"
-                           checked={this.state.isDone}
-                           onChange={this.isDoneChanged}
+                           checked={this.state.checkboxSendIsDone}
+                           onChange={this.onChangeSendCheckbox}
                     />
                     <button disabled={this.state.downloading}
                             onClick={this.onClick}

@@ -6,7 +6,8 @@ const instance = axios.create({
 
 const tryCatch = async (f) => {
     try {
-        const response = await f()
+        // const response =
+        await f()
         // console.log('answer: ', response.data)
         return true
     } catch (e) {

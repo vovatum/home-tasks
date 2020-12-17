@@ -8,7 +8,7 @@ import Tuesday from "./components/Tuesday/Tuesday";
 import {restoreState, saveState} from "./components/universal/LocStorFunctions";
 import Download from "./components/universal/Download/Download";
 import {connect} from "react-redux";
-import Wednesday from "./components/Wednesday/Wednesday";
+import WednesdayContainer from "./components/Wednesday/WednesdayContainer";
 
 class App extends React.Component {
 
@@ -67,10 +67,7 @@ class App extends React.Component {
                         <Route path='/tuesday' render={() =>
                             <Tuesday/>}/>
                         <Route path='/wednesday' render={() =>
-                            <Wednesday
-                                changedStyles={this.props.changedStyles}
-                                state={this.props.style}
-                            />}/>
+                            <WednesdayContainer/>}/>
                     </div>}
             </div>
         )
@@ -79,8 +76,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.preloader.loading,
-        style: state.settings.style
+        loading: state.preloader.loading
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -89,13 +85,6 @@ const mapDispatchToProps = (dispatch) => {
             const action = {
                 type: "SET_LOADING",
                 loading: false
-            }
-            dispatch(action)
-        },
-        changedStyles: (value) => {
-            const action = {
-                type: 'CHANGE_STYLE',
-                style: value
             }
             dispatch(action)
         }
