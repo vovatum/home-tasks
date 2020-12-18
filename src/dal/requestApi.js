@@ -16,6 +16,8 @@ const tryCatch = async (f) => {
     }
 }
 
-export const postSend = (isDone) => {
-    return tryCatch(() => instance.post('', {success: isDone}))
+export const request = async (isDone) => {
+    return await tryCatch(() => instance.post('', {success: isDone}))
+        ? 'Успех'
+        : `Запрос не удался :(`
 }

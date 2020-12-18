@@ -1,34 +1,26 @@
 import React from 'react';
-import styles from './Wednesday.module.css';
 import Download from "../universal/Download/Download";
 
 class Wednesday extends React.Component {
 
     state = {
-        classWednesday: styles.bordo,
-        checkboxSendIsDone: false,
-        downloading: false,
+        checkboxIsDone: false,
     }
 
     onChangeTheme = (e) => {
         this.props.changeTheme(e.target.value)
-        this.setState({classWednesday: e.target.value})
     }
     onChangeSendCheckbox = (e) => {
-        this.setState({checkboxSendIsDone: e.currentTarget.checked})
+        this.setState({checkboxIsDone: e.currentTarget.checked})
     }
     onClick = () => {
-        this.setState({downloading: true})
-        this.props.getPostRequest(this.state.checkboxSendIsDone)
-        // true
-        //     ? this.setState({response: 'Успех', downloading: false})
-        //     : this.setState({response: `Запрос не удался :(`, downloading: false})
+        this.props.setRequest(this.state.checkboxIsDone)
     }
 
     render() {
         console.log(this.props)
         return (
-            <div className={this.state.classWednesday}>
+            <div className={this.props.class}>
                 {this.props.themes.map(theme => {
                     return (
                         <span key={theme.name}>
@@ -43,17 +35,17 @@ class Wednesday extends React.Component {
                 })}
                 <div>
                     <input type="checkbox"
-                           checked={this.state.checkboxSendIsDone}
+                           checked={this.state.checkboxIsDone}
                            onChange={this.onChangeSendCheckbox}
                     />
-                    <button disabled={this.state.downloading}
+                    <button disabled={this.props.isFetching}
                             onClick={this.onClick}
                     >SEND
                     </button>
                 </div>
-                {this.state.downloading
+                {this.props.isFetching
                     ? <Download/>
-                    : <span className={'spinner'}>{this.state.response}</span>
+                    : <span className={'spinner'}>{this.props.response}</span>
                 }
             </div>
         )
